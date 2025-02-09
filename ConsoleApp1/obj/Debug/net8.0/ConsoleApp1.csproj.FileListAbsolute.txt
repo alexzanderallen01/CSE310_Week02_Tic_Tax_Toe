@@ -12,3 +12,4 @@ c:\Users\alexz\Documents\School\CSE 310\CSE310_Week02_Tic_Tax_Toe\ConsoleApp1\ob
 c:\Users\alexz\Documents\School\CSE 310\CSE310_Week02_Tic_Tax_Toe\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.pdb
 c:\Users\alexz\Documents\School\CSE 310\CSE310_Week02_Tic_Tax_Toe\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.genruntimeconfig.cache
 c:\Users\alexz\Documents\School\CSE 310\CSE310_Week02_Tic_Tax_Toe\ConsoleApp1\obj\Debug\net8.0\ref\ConsoleApp1.dll
+c:\Users\alexz\Documents\School\CSE 310\CSE310_Week02_Tic_Tax_Toe\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.sourcelink.json

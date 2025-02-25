@@ -1,75 +1,54 @@
-﻿using System.Reflection.Metadata;
+﻿using System.Linq.Expressions;
+using System.Reflection.Metadata;
 
 class Program {
     public static void Main(string[] args) {
-        //Created a 2d array called Board to store board state in table format.
-        string[,] Board = new string[8, 8];
-        //max # of rows
-        int rows = 8;
-        //max nuber of columns
-        int columns = 8; 
-        //player variables to make detirming which symbol to use on game board simple.
-        string player1 = "x";
-        string player2 = "o";
-        Console.WriteLine("Checkers Board:");
+        Game_board game_Board = new Game_board();
+        int playergame = game_Board.Set_up();
+        PlayGame(game_Board, playergame);
 
-        Setupgame(Board, rows, columns, player1, player2);
-        printBoard(Board, rows, columns);
-
+        //OLD GAME LOOP. Remove once new classes handle game overs
         //loop to checks if player a player has won. If not keep playing. (remake this to call gameover inside to allow for game to be restarted)
-        while (!GameOver(Board, rows, columns, player1, player2)) {
-            PlayGame(Board, rows, columns, player1, player2);
-        }
+        // while (!GameOver(Board, rows, columns, player1, player2)) {
+        //     PlayGame(Board, rows, columns, player1, player2);
+        // }
     }
 
-    //function that will fill up the 2d array with an empty
-    public static void Setupgame(string[,] Board, int rows, int columns, string player1, string player2) {
-        //create new board to be printed by create board
-        for (var i = 0; i < rows; i++) {
-            for (var o = 0; o < columns; o++) {
-                //Console.WriteLine(o);
-                if (i == 0 && o%2 == 1){
-                    Board[i,o] = "O";
-                }  
-                else if (i == rows - 1 && o%2 != 1){
-                    Board[i,o] = "x";
-                }
-                else {
-                    Board[i,o] = ".";
-                }
-            }
-        }
-    }
+    
 
-    //function that will take in 2 int varibles to print the tic tac toe board. Should allow for the board to be scaled to any size if I have the time for that.
-    public static void printBoard(string[,] Board, int rows, int columns) {
-        //print board with player changes
-        for (var i = 0; i < rows; i++) {
-            for (var o = 0; o < columns; o++) {
-                Console.Write(Board[i,o]);
-            }
-            Console.WriteLine();
+    //function that will handle all needed info loops & call classes needed to run game loop for chosen game
+    public static void PlayGame(Game_board game_Board, int playergame) {
+        if (playergame == 1) {
+            Tic_tac_toe_movement_system tic_Tac_Toe_Movement_System = new Tic_tac_toe_movement_system();
+            game_Board.printBoard();
         }
-    }
-
-    //function that will take in all needed info & use call functions needed to run the game loop
-    public static void PlayGame(string[,] Board, int rows, int columns, string player1, string player2) {
+        else if (playergame == 2) {
+            Checkers_movement_system checkers_Movement_System = new Checkers_movement_system();
+            game_Board.printBoard();
+            
+        }
+        else {
+            Chess_movement_system chess_Movement_System = new Chess_movement_system();
+            game_Board.printBoard();
+            
+        }
+        //OLD TURN SYSTEM. Example only. Remove after PlayGame fully works
         //get player 1 turn, print their change. Then do that for player 2.
-        SetPosition(Board, player1, player2);
-        printBoard(Board, rows, columns);
-        SetPosition(Board, player2, player1);
-        printBoard(Board, rows, columns);
+        // SetPosition(Board, player1, player2, rows, columns);
+        // printBoard(Board, rows, columns);
+        // SetPosition(Board, player2, player1, rows, columns);
+        // printBoard(Board, rows, columns);
     }
-
+    //OLD CHECKERS MOVEMENT SYSTEM. DO NOT USE. remove after new movement class is done.
     //function that will ask the current play the index of the row & colomn of the spot they want to pick & set that spot to their symbol
-    public static void SetPosition(string[,] Board, string player, string other_player) {
+    public static void SetPosition(string[,] Board, string player, string other_player, int rows, int columns) {
         bool turn = true;
         
         //Get row & column indexs of spot they want to pick
         Console.WriteLine("please pick the pick you want to move");
-        Console.WriteLine($"player {player} choose a row (1-8):");
+        Console.WriteLine($"player {player} choose a row (1-{rows}):");
         int playerRow = Convert.ToInt32(Console.ReadLine()) - 1;
-        Console.WriteLine($"player {player} choose a column (1-8):");
+        Console.WriteLine($"player {player} choose a column (1-{columns}):");
         int playerColumn = Convert.ToInt32(Console.ReadLine()) - 1;
         //use row index & column index in 2d array to change player choose spot on board to player symbol
         while (turn == true) {
@@ -84,10 +63,10 @@ class Program {
                     && (Board[playerRow + 2, playerColumn - 2] == "."))) {
 
                         Console.WriteLine("You can take a piece!");
-                        Console.WriteLine("would you like to move left or right? l/r");
-                        string move;
+                        Console.WriteLine("would you like to move left or right? l/r: ");
+                        
                         //use row index & column index in 2d array to change player choose spot on board to player symbol
-                        move = Console.ReadLine();
+                        string? move = Console.ReadLine();
                         if (move == "l") {
                             Board[playerRow + 1, playerColumn - 1] = ".";
                             Board[playerRow + 2, playerColumn - 2] = player;
@@ -99,9 +78,8 @@ class Program {
                     }
                     else {
                         Console.WriteLine("would you like to move left or right? l/r");
-                        string move;
                         //use row index & column index in 2d array to change player choose spot on board to player symbol
-                        move = Console.ReadLine();
+                        string? move = Console.ReadLine();
                         if (move == "l") {
                             Board[playerRow + 1, playerColumn - 1] = player;
                         }
@@ -132,8 +110,7 @@ class Program {
 
                         Console.WriteLine("You can take a piece!");
                         Console.WriteLine("would you like to move left or right? l/r");
-                        string move;
-                        move = Console.ReadLine();
+                        string? move = Console.ReadLine();
                         //use row index & column index in 2d array to change player choose spot on board to player symbol
                         if (move == "l") {
                             Board[playerRow - 1, playerColumn - 1] = ".";
@@ -146,8 +123,7 @@ class Program {
                     }
                     else {
                         Console.WriteLine("would you like to move left or right? l/r");
-                        string move;
-                        move = Console.ReadLine();
+                        string? move = Console.ReadLine();
                         //use row index & column index in 2d array to change player choose spot on board to player symbol
                         if (move == "l") {
                             Board[playerRow - 1, playerColumn - 1] = player;
@@ -168,38 +144,6 @@ class Program {
                     playerColumn = Convert.ToInt32(Console.ReadLine()) - 1;
                 }
             }
-        }
-    }
-
-    //function that will read game board & check all posibles areas to see if a player is no longer on the board.    
-    public static bool GameOver(string[,] Board, int rows, int columns, string player, string other_player) {
-        //counter varibles that increase if player is still on board
-        int x_on_board = 0;
-        int o_on_board = 0;
-        //loop through board
-        for (var i = 0; i < rows; i++) {
-            for (var o = 0; o < columns; o++) {
-                if (Board[i,o] == "x") {
-                    x_on_board += 1;
-                }
-                if (Board[i,o] == "o") {
-                    o_on_board += 1;
-                }
-            }
-        }
-        //check if a player is no longer on the board and say the winner
-        if (x_on_board == 0 && o_on_board == 0) {
-            if (x_on_board == 0) {
-                Console.WriteLine($"player 2 wins!");
-            }
-            else {
-                Console.WriteLine($"player 1 wins!");
-            }
-            //end game
-            return true;
-        }
-        else {
-            return false;
         }
     }
 }

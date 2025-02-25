@@ -1,6 +1,6 @@
-This is a C# checker console program I created to help me to research different ways I can go about programming and developing. After a lot of research I decided to base this program of 2d arrays to allow me to make this program easily scaliable & allow me to be able to add a lot of features to the game. I wanted to be able to
+This is a C# board game console program I created to help me to research different ways I can go about programming and developing. After a lot of research I decided to base this program of 2d arrays to allow me to make this program easily scaliable & allow me to be able to add a lot of features to the game. I want to be able to beable to use everything I have learned about programming and C# to create a program that can allow you to play 3 different games, tic tac toe, checkers, and chess. Once I have the 3 games fully working, I would like to begin learning more about how to use ai so that I can make this multiplayer or single player.
 
-[Software Demo Video](https://youtu.be/C-8IXPghxO4)
+[Software Demo Video](https://youtu.be/ZhL07_RQGD4)
 
 tools that I used to develop the software:
 The 2 tools I used where VS code to write my code in & check for bugs & typos, and W3school's try it your self feature to test small pieces on code to better understand how it worked.
@@ -12,8 +12,9 @@ Websites & other tools I used when making this:
 - [stackoverflow](https://stackoverflow.com): This was the form I gathered a lot of ideas from and found a lot of tips on how to make things either better or how to make things work.
 - [github](https://github.com/jcscruggs/WPF-Checkers/tree/master/checkers_game) &
 - [github](https://github.com/dotnet/dotnet-console-games/tree/main/Projects/Checkers): These are 2 other c# checker games I looked through & spented a lot of time trying to understand & research. Both of them generate a board out side of the console and are a lot more complex then what I ever planned on doing, but they helped me get a much better understanding on the tools I can use to make my program. None of their code is in my project, but I did get some ideas from them that are somewhat implemented into my project so I wanted to give them credit.
+- [github](https://github.com/ruskpr/chess): This is the project I studied a bit for how they handled chess moves & how they made their program move in a pop up window instead of the console like I have been using.
 
 list of things that I need to fix or improve in the future:
-- Fix player 2 being able to take their turn after player 1 wins
-- change the player movement to its own class
-- add in getting a queen & queen movement
+- Fix the game board class
+- finish the player movement classes for the checkers and chess game
+- make the game work in a pop out window

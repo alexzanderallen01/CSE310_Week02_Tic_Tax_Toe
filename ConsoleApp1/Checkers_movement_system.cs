@@ -1,5 +1,5 @@
 class Checkers_movement_system : Basic_movement_system {
-    public Checkers_movement_system() : Basic_movement_system(string[,] Board, int rows, int columns, string player) {
+    public Checkers_movement_system(string[,] Board, int rows, int columns, string player) : base(Board, rows, columns, player) {
 
     }
     public static void checkers_movement() {

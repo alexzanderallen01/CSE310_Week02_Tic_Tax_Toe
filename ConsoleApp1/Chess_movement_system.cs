@@ -1,5 +1,5 @@
 class Chess_movement_system : Basic_movement_system {
-    public Chess_movement_system() : Basic_movement_system(string[,] Board, int rows, int columns, string player) {
+    public Chess_movement_system(string[,] Board, int rows, int columns, string player) : base(Board, rows, columns, player) {
 
     }
     public static void Chess_piece_detecter_and_simple_movement() {
@@ -23,7 +23,7 @@ class Chess_movement_system : Basic_movement_system {
     public static void King_in_check() {
 
     }
-    public override bool GameOver() {
+    // public override bool GameOver() {
 
-    }
+    // }
 }

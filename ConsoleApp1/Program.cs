@@ -7,37 +7,43 @@ class Program {
         int playergame = game_Board.Set_up();
         PlayGame(game_Board, playergame);
 
-        //OLD GAME LOOP. Remove once new classes handle game overs
-        //loop to checks if player a player has won. If not keep playing. (remake this to call gameover inside to allow for game to be restarted)
-        // while (!GameOver(Board, rows, columns, player1, player2)) {
-        //     PlayGame(Board, rows, columns, player1, player2);
-        // }
     }
 
     
 
     //function that will handle all needed info loops & call classes needed to run game loop for chosen game
     public static void PlayGame(Game_board game_Board, int playergame) {
+        string[,] Board = game_Board.return_Board();
+        int rows = game_Board.return_rows();
+        int columns = game_Board.return_columns();
+        string player = game_Board.return_player();
+        string other_player = game_Board.return_other_player();
+
         if (playergame == 1) {
-            Tic_tac_toe_movement_system tic_Tac_Toe_Movement_System = new Tic_tac_toe_movement_system();
+            Tic_tac_toe_movement_system tic_Tac_Toe_Movement_System = new Tic_tac_toe_movement_system(Board,rows,columns,player,other_player);
             game_Board.printBoard();
+            while (true) {
+                tic_Tac_Toe_Movement_System.tic_tac_toe_movement(player);
+                game_Board.printBoard();
+                if (tic_Tac_Toe_Movement_System.GameOver() == true) {
+                    break;
+                }
+                tic_Tac_Toe_Movement_System.tic_tac_toe_movement(other_player);
+                game_Board.printBoard();
+                if (tic_Tac_Toe_Movement_System.GameOver() == true) {
+                    break;
+                }
+            }
         }
-        else if (playergame == 2) {
-            Checkers_movement_system checkers_Movement_System = new Checkers_movement_system();
-            game_Board.printBoard();
+        // else if (playergame == 2) {              //Other game types. Commented out due to them not being finished & not letting the program run due to errors
+        //     Checkers_movement_system checkers_Movement_System = new Checkers_movement_system();
+        //     game_Board.printBoard();
             
-        }
-        else {
-            Chess_movement_system chess_Movement_System = new Chess_movement_system();
-            game_Board.printBoard();
-            
-        }
-        //OLD TURN SYSTEM. Example only. Remove after PlayGame fully works
-        //get player 1 turn, print their change. Then do that for player 2.
-        // SetPosition(Board, player1, player2, rows, columns);
-        // printBoard(Board, rows, columns);
-        // SetPosition(Board, player2, player1, rows, columns);
-        // printBoard(Board, rows, columns);
+        // }
+        // else {
+        //     Chess_movement_system chess_Movement_System = new Chess_movement_system();
+        //     game_Board.printBoard(); 
+        // }
     }
     //OLD CHECKERS MOVEMENT SYSTEM. DO NOT USE. remove after new movement class is done.
     //function that will ask the current play the index of the row & colomn of the spot they want to pick & set that spot to their symbol

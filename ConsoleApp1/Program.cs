@@ -8,8 +8,6 @@ class Program {
         PlayGame(game_Board, playergame);
     }
     
-    
-
     //function that will handle all needed info loops & call classes needed to run game loop for chosen game
     public static void PlayGame(Game_board game_Board, int playergame) {
         string[,] Board = game_Board.return_Board();

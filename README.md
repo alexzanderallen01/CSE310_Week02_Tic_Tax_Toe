@@ -1,7 +1,6 @@
 This is a C# board game console program I created to help me to research different ways I can go about programming and developing. After a lot of research I decided to base this program of 2d arrays to allow me to make this program easily scaliable & allow me to be able to add a lot of features to the game. I want to be able to beable to use everything I have learned about programming and C# to create a program that can allow you to play 3 different games, tic tac toe, checkers, and chess. Once I have the 3 games fully working, I would like to begin learning more about how to use ai so that I can make this multiplayer or single player. While I am probably going to have to set this project down for awhile, I would like to come back to it once I have learned more. This project has taught me a lot and shown me just how much I am lacking in programing knowledge.
-
-[Old Software Demo Video](https://youtu.be/ZhL07_RQGD4)
-[Current Software Demo Video](https://youtu.be/7zbIjxWPOyo)
+ 
+[Software Demo Video](https://youtu.be/7zbIjxWPOyo)
 
 tools that I used to develop the software:
 The 2 tools I used where VS code to write my code in & check for bugs & typos, and W3school's try it your self feature to test small pieces on code to better understand how it worked.

@@ -46,10 +46,10 @@ class Game_board {
             for (var i = 0; i < _rows; i++) {
                 for (var o = 0; o < _columns; o++) {
                     //Console.WriteLine(o);
-                    if (i == 0 && o%2 == 1){
-                        _Board[i,o] = "O";
+                    if (i == 0 && o%2 == 1 || i == 2 && o%2 == 1 || i == 1 && o%2 == 0){
+                        _Board[i,o] = "o";
                     }  
-                    else if (i == _rows - 1 && o%2 != 1){
+                    else if (i == _rows - 1 && o%2 != 1 || i == _rows - 3 && o%2 == 0 || i == _rows - 2 && o%2 == 1){
                         _Board[i,o] = "x";
                     }
                     else {
@@ -75,11 +75,22 @@ class Game_board {
     }
     
     //function that will take in 2 int varibles to print theboard.
-    public void printBoard() {
+    public void print_New_Board() {
         //print board with player changes
+        for (int j = 0; j <= _rows; j++){
+            Console.Write(j);
+        }
+        Console.WriteLine();
         for (var i = 0; i < _rows; i++) {
             for (var o = 0; o < _columns; o++) {
-                Console.Write(_Board[i,o]);
+                
+                if (o == 0){
+                    Console.Write(i+1);
+                    Console.Write(_Board[i,o]);
+                }
+                else {
+                    Console.Write(_Board[i,o]);
+                }
             }
             Console.WriteLine();
         }

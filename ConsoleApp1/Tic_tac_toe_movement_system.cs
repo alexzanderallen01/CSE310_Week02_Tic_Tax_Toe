@@ -1,12 +1,11 @@
 class Tic_tac_toe_movement_system : Basic_movement_system {
     protected string _other_player;
-    protected int _playerRow;
-    protected int _playerColumn;
     public Tic_tac_toe_movement_system(string[,] Board, int rows, int columns, string player, string other_player) : base(Board, rows, columns, player) 
     {
         _other_player = other_player;
         
     }
+    // override Basic_movement_system for better game info
     public override void standard_move_pick() {
         Console.WriteLine($"please pick where to place your symbol");
         Console.WriteLine($"Choose a row (1-{_rows}):");
@@ -14,9 +13,10 @@ class Tic_tac_toe_movement_system : Basic_movement_system {
         Console.WriteLine($"Choose a column (1-{_columns}):");
         _playerColumn = Convert.ToInt32(Console.ReadLine()) - 1;
     }
+    //Main function to handle movement & call other functions relating to movement
     public void tic_tac_toe_movement(string current_player) {
         standard_move_pick();
-        Console.WriteLine(_Board[_playerRow, _playerColumn]);
+        //Console.WriteLine(_Board[_playerRow, _playerColumn]);
         if (_Board[_playerRow, _playerColumn] == ".") {
             _Board[_playerRow, _playerColumn] = current_player;
         }

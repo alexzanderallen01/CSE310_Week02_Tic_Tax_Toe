@@ -6,9 +6,8 @@ class Program {
         Game_board game_Board = new Game_board();
         int playergame = game_Board.Set_up();
         PlayGame(game_Board, playergame);
-
     }
-
+    
     
 
     //function that will handle all needed info loops & call classes needed to run game loop for chosen game
@@ -21,25 +20,37 @@ class Program {
 
         if (playergame == 1) {
             Tic_tac_toe_movement_system tic_Tac_Toe_Movement_System = new Tic_tac_toe_movement_system(Board,rows,columns,player,other_player);
-            game_Board.printBoard();
+            game_Board.print_New_Board();
             while (true) {
                 tic_Tac_Toe_Movement_System.tic_tac_toe_movement(player);
-                game_Board.printBoard();
+                tic_Tac_Toe_Movement_System.printBoard();
                 if (tic_Tac_Toe_Movement_System.GameOver() == true) {
                     break;
                 }
                 tic_Tac_Toe_Movement_System.tic_tac_toe_movement(other_player);
-                game_Board.printBoard();
+                tic_Tac_Toe_Movement_System.printBoard();
                 if (tic_Tac_Toe_Movement_System.GameOver() == true) {
                     break;
                 }
             }
         }
-        // else if (playergame == 2) {              //Other game types. Commented out due to them not being finished & not letting the program run due to errors
-        //     Checkers_movement_system checkers_Movement_System = new Checkers_movement_system();
-        //     game_Board.printBoard();
+        else if (playergame == 2) {              //Other game types. Commented out due to them not being finished & not letting the program run due to errors
+            Checkers_movement_system checkers_Movement_System = new Checkers_movement_system(Board,rows,columns,player);
+            game_Board.print_New_Board();
+            while (true) {
+                checkers_Movement_System.checkers_movement(player);
+                checkers_Movement_System.printBoard();
+                if (checkers_Movement_System.GameOver() == true) {
+                    break;
+                }
+                checkers_Movement_System.checkers_movement(other_player);
+                checkers_Movement_System.printBoard();
+                if (checkers_Movement_System.GameOver() == true) {
+                    break;
+                }
+            }
             
-        // }
+        }
         // else {
         //     Chess_movement_system chess_Movement_System = new Chess_movement_system();
         //     game_Board.printBoard(); 
